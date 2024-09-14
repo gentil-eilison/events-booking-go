@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 
+	"github.com/gentil-eilison/events-booking-go/db"
 	"github.com/gentil-eilison/events-booking-go/models"
 
 	"github.com/gin-gonic/gin"
@@ -11,6 +12,7 @@ import (
 func main() {
 	// Logger - logs operations of the server
 	// Recovery - makes sure only part of the server app crashses when panicking
+	db.InitDB()
 	server := gin.Default()
 
 	server.GET("/events", getEvents)
