@@ -123,3 +123,12 @@ func (event Event) Update() error {
 	_, err = stmt.Exec(event.Name, event.Description, event.Location, event.DateTime, event.ID)
 	return err
 }
+
+func (event Event) Delete() error {
+	query := `
+	DELETE FROM event WHERE id = ?
+	`
+	_, err := db.DB.Exec(query, event.ID)
+
+	return err
+}
